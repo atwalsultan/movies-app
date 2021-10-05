@@ -12,3 +12,16 @@ export const fetchMovies = async (movieType) => {
     throw error;
   }
 }
+
+export const fetchShows = async (showType) => {
+    const url = `${BASE_URL}/tv/${showType}?api_key=${API_KEY}&language=en-US&page=1`;
+
+    try {
+        const response = await fetch(url);
+        const responseJson = await response.json();
+        return responseJson.results;
+    }
+    catch(error) {
+        throw error;
+    }
+}

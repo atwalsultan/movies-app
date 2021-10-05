@@ -11,7 +11,7 @@ const MovieCard = ({navigation, item}) => {
 
                 <Box width='55%' >
                     <VStack>
-                        <Heading size='sm'>{item.title}</Heading>
+                        <Heading size='sm'>{item.original_name}</Heading>
                         <Text>Popularity: {item.popularity}</Text>
                         <Text>Release Date: {item.release_date}</Text>
                         <Button onPress={() => navigation.navigate('MoviesShow', { poster_path: item.poster_path, title: item.title, overview: item.overview, popularity: item.popularity, releaseDate: item.release_date })}>More Details</Button>
