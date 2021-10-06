@@ -2,12 +2,12 @@ import * as React from 'react';
 import { FlatList } from 'native-base';
 import Card from '../cards/Card';
 
-const ShowsList = ({ navigation, shows, mediaType }) => {
+const IndexList = ({ navigation, data, mediaType }) => {
     return (
         <FlatList
-            data={shows}
+            data={data}
             renderItem={({ item }) => (
-                <Card navigation={navigation} id={item.id} mediaType={mediaType} item={item}/>
+                <Card navigation={navigation} id={item.id} mediaType={item.media_type ? item.media_type : mediaType} item={item} />
             )}
 
             keyExtractor={item => item.id.toString()}
@@ -16,4 +16,4 @@ const ShowsList = ({ navigation, shows, mediaType }) => {
     )
 }
 
-export default ShowsList
+export default IndexList

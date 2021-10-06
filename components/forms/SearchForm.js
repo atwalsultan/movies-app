@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Button, FormControl, HStack, Icon, Input, VStack } from 'native-base'
-import { Ionicons } from '@expo/vector-icons'
-import SearchSelect from '../selects/SearchSelect'
+import React from 'react';
+import { Box, Button, FormControl, HStack, Icon, Input, VStack } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
+import TypeSelect from '../selects/TypeSelect';
 
 const SearchForm = ({ handleInputChange, onSubmit, searchType, setSearchType }) => {
     return (
@@ -23,7 +23,9 @@ const SearchForm = ({ handleInputChange, onSubmit, searchType, setSearchType }) 
 
                     <FormControl.Label fontSize='sm'>Choose Search Type</FormControl.Label>
                     <HStack space={4}>
-                        <SearchSelect searchType={searchType} setSearchType={setSearchType}/>
+                        <Box minWidth="50%">
+                            <TypeSelect type={searchType} setType={setSearchType} optionsArray={["movie", "multi", "tv"]} minWidth="50%" />
+                        </Box>
 
                         <Button startIcon={<Icon as={Ionicons} name='ios-search' />} onPress={onSubmit}>
                             Search

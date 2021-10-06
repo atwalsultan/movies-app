@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, VStack, Heading, Text, Image, Button, HStack } from 'native-base';
 
-const MovieCard = ({navigation, item, mediaType}) => {
+const MovieCard = ({ navigation, item, mediaType }) => {
 
 
     return (
