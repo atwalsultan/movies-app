@@ -19,7 +19,7 @@ const ShowsContainer = ({navigation}) => {
     return (
         <Container>
             <ShowsSelect showType={showType} setShowType={setShowType} />
-            {shows ? <ShowsList navigation={navigation} shows={shows}/> : <Loading />}
+            {shows ? <ShowsList navigation={navigation} shows={shows} mediaType='tv' /> : <Loading />}
         </Container>
     )
 }

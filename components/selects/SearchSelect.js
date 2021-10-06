@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Box, Select, Center } from 'native-base';
+import { Select } from 'native-base';
 
-const SearchSelect = () => {
+const SearchSelect = ({ searchType, setSearchType }) => {
     return (
-        <Select selectedValue="multi" minWidth="50%">
+        <Select selectedValue={searchType} minWidth="50%" onValueChange={(value) => setSearchType(value)}>
             <Select.Item label="Movie" value="movie" />
             <Select.Item label="Multi" value="multi" />
-            <Select.Item label="Shows" value="shows" />
+            <Select.Item label="TV" value="tv" />
         </Select>
     )
 }
