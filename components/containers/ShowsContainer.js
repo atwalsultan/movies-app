@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'native-base';
-import ShowsList from '../lists/ShowsList';
-import ShowsSelect from '../selects/ShowsSelect';
+import { Container, Box, Center } from 'native-base';
 import Loading from '../layout/Loading';
-import { fetchShows } from '../services/api'
+import { fetchShows } from '../services/api';
+import IndexList from '../lists/IndexList';
+import TypeSelect from '../selects/TypeSelect';
 
-const ShowsContainer = ({navigation}) => {
+const ShowsContainer = ({ navigation }) => {
     const [showType, setShowType] = useState("popular");
     const [shows, setShows] = useState(null);
 
@@ -18,8 +18,13 @@ const ShowsContainer = ({navigation}) => {
 
     return (
         <Container>
-            <ShowsSelect showType={showType} setShowType={setShowType} />
-            {shows ? <ShowsList navigation={navigation} shows={shows} mediaType='tv' /> : <Loading />}
+            <Box py={4}>
+                <Center>
+                    <TypeSelect minWidth="100%" type={showType} setType={setShowType} optionsArray={["airing_today", "popular", "on_the_air", "top_rated"]} />
+                </Center>
+            </Box>
+
+            {shows ? <IndexList navigation={navigation} data={shows} mediaType='tv' /> : <Loading />}
         </Container>
     )
 }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'native-base';
-import MoviesList from '../lists/MoviesList';
-import MoviesSelect from '../selects/MoviesSelect';
+import { Container, Box, Center } from 'native-base';
 import Loading from '../layout/Loading';
-import { fetchMovies } from '../services/api'
+import { fetchMovies } from '../services/api';
+import IndexList from '../lists/IndexList';
+import TypeSelect from '../selects/TypeSelect';
 
-const MoviesContainer = ({navigation}) => {
+const MoviesContainer = ({ navigation }) => {
     const [movieType, setMovieType] = useState("popular");
     const [movies, setMovies] = useState(null);
 
@@ -18,8 +18,13 @@ const MoviesContainer = ({navigation}) => {
 
     return (
         <Container>
-            <MoviesSelect movieType={movieType} setMovieType={setMovieType}/>
-            {movies ? <MoviesList navigation={navigation} movies={movies} mediaType='movie' /> : <Loading />}
+            <Box py={4}>
+                <Center>
+                    <TypeSelect minWidth="100%" type={movieType} setType={setMovieType} optionsArray={["now_playing", "popular", "top_rated", "upcoming"]} />
+                </Center>
+            </Box>
+
+            {movies ? <IndexList navigation={navigation} data={movies} mediaType='movie' /> : <Loading />}
         </Container>
     )
 }

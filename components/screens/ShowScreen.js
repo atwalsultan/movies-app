@@ -9,20 +9,24 @@ const MoviesShowScreen = ({ navigation, route }) => {
     useEffect(() => {
         fetchDetails(mediaType, id).then((details) => {
             setDetails(details);
+            navigation.setOptions({
+                title: details.title,
+                headerBackTitle: 'Back to List'
+            })
         })
     }, [])
 
     return (
         <>
             <StatusBar backgroundColor='white' barStyle='light-content' />
-            { details &&
+            {details &&
                 <Center>
                     <Container pt={6}>
-                        <VStack space={4} style={{alignItems: 'center'}}>
-                            <Heading py={10} style={{textAlign: 'center'}}>{details.title}</Heading>
+                        <VStack space={4} style={{ alignItems: 'center' }}>
+                            <Heading py={10} style={{ textAlign: 'center' }}>{details.title}</Heading>
                             <Image alt={`${details.title}`} source={{ uri: `https://image.tmdb.org/t/p/w500${details.poster_path}` }} size={'2xl'} />
                             <Text>{details.overview}</Text>
-                            <Text>Popularity: {details.popularity} | Release Date: {details.releaseDate}</Text>	
+                            <Text>Popularity: {details.popularity} | Release Date: {details.releaseDate}</Text>
                         </VStack>
                     </Container>
                 </Center>
