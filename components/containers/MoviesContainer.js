@@ -19,7 +19,7 @@ const MoviesContainer = ({navigation}) => {
     return (
         <Container>
             <MoviesSelect movieType={movieType} setMovieType={setMovieType}/>
-            {movies ? <MoviesList navigation={navigation} movies={movies}/> : <Loading />}
+            {movies ? <MoviesList navigation={navigation} movies={movies} mediaType='movie' /> : <Loading />}
         </Container>
     )
 }

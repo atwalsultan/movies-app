@@ -32,7 +32,7 @@ export default function App() {
 			<NavigationContainer>
 				<Stack.Navigator>
 					<Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false}} />
-					<Stack.Screen name="MoviesShow" component={ShowScreen} options={({ route }) => ({
+					<Stack.Screen name="Show" component={ShowScreen} options={({ route }) => ({
 						title: route.params.title,
 					})} />
 				</Stack.Navigator>
