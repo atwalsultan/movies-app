@@ -23,7 +23,7 @@ const SearchContainer = ({ navigation }) => {
 
     return (
         <Container>
-            <SearchForm handleInputChange={handleInputChange} onSubmit={onFormSubmit} searchType={searchType} setSearchType={setSearchType} />
+            <SearchForm handleInputChange={handleInputChange} onSubmit={onFormSubmit} searchType={searchType} setSearchType={setSearchType} setSearchResults={setSearchResults}/>
             {searchResults ? <IndexList navigation={navigation} data={searchResults} mediaType={searchType} /> : <SearchResultsLoading />}
         </Container>
     )
