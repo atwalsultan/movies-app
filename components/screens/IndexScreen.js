@@ -1,15 +1,11 @@
 import * as React from 'react';
 import { Center } from 'native-base';
-import MoviesContainer from '../containers/MoviesContainer';
-import SearchContainer from '../containers/SearchContainer';
-import ShowsContainer from '../containers/ShowsContainer';
+import IndexContainer from '../containers/IndexContainer';
 
 const IndexScreen = ({ navigation, tab }) => {
     return (
         <Center>
-            {tab == "movies" && <MoviesContainer navigation={navigation} />}
-            {tab == "search" && <SearchContainer navigation={navigation} />}
-            {tab == "tv" && <ShowsContainer navigation={navigation} />}
+            <IndexContainer navigation={navigation} tab={tab} />
         </Center>
     )
 }

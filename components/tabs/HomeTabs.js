@@ -10,7 +10,7 @@ const HomeTabs = () => {
 		<>
 			<Header />
 			<Tab.Navigator>
-				<Tab.Screen name="Movies">{(props) => <IndexScreen {...props} tab="movies" />}</Tab.Screen>
+				<Tab.Screen name="Movies">{(props) => <IndexScreen {...props} tab="movie" />}</Tab.Screen>
 				<Tab.Screen name="Search Results">{(props) => <IndexScreen {...props} tab="search" />}</Tab.Screen>
 				<Tab.Screen name="TV Shows">{(props) => <IndexScreen {...props} tab="tv" />}</Tab.Screen>
 			</Tab.Navigator>

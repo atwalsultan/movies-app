@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import { Box, Button, FormControl, HStack, Icon, Input, VStack, Container } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import TypeSelect from '../selects/TypeSelect';
+import { fetchSearchResults } from '../services/api';
 
-const SearchForm = ({ handleInputChange, onSubmit, searchType, setSearchType, setSearchResults }) => {
+const SearchForm = ({ type, setType, setList }) => {
     const [error, setError] = useState(false);
-    const [searchString, setSearchString] = useState("");
+    const [searchInput, setsearchInput] = useState("");
+
+    const onFormSubmit = () => {
+        fetchSearchResults(searchInput, type).then((fetchedResults) => {
+            setList(fetchedResults);
+        });
+    }
 
     return (
         <VStack width='100%' my={4}>
@@ -20,8 +27,7 @@ const SearchForm = ({ handleInputChange, onSubmit, searchType, setSearchType, se
                                 <Icon size={5} ml={2} as={<Ionicons name='ios-search' />} />
                             }
                             onChangeText={value => {
-                                setSearchString(value);
-                                handleInputChange(value);
+                                setsearchInput(value);
                             }}
                         />
                     </Container>
@@ -29,17 +35,17 @@ const SearchForm = ({ handleInputChange, onSubmit, searchType, setSearchType, se
                     <FormControl.Label fontSize='sm'>Choose Search Type</FormControl.Label>
                     <HStack space={4}>
                         <Box minWidth="50%" style={[{borderWidth: 1}, error && {borderColor: 'red'}]}>
-                            <TypeSelect type={searchType} setType={setSearchType} optionsArray={["movie", "multi", "tv"]} minWidth="50%" />
+                            <TypeSelect type={type} setType={setType} optionsArray={["movie", "multi", "tv"]} minWidth="50%" />
                         </Box>
 
                         <Button startIcon={<Icon as={Ionicons} name='ios-search' />} onPress={() => {
-                            if(searchString === undefined || searchString === "") {
+                            if(searchInput === undefined || searchInput === "") {
                                 setError(true);
-                                setSearchResults(null)
+                                setList(null)
                                 return;
                             }
                             setError(false);
-                            onSubmit();
+                            onFormSubmit();
                         }}>
                             Search
                         </Button>
